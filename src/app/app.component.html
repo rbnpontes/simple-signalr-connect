@@ -1,0 +1,38 @@
+<div>
+  <label for="hub-url">Hub URL: </label>
+  <input type="text" name="api-path" placeholder="/hub" id="hub-url" [(ngModel)]="apiPath" />
+  <button (click)="tryConnect()">Connect</button>
+  <button (click)="tryDisconnect()">Disconnect</button>
+</div>
+<br />
+<div>
+  <label for="hub-channel">Listen Channel: </label>
+  <input type="text" name="channel" id="hub-channel" [(ngModel)]="channel">
+  <button (click)="listenChannel()">+</button>
+</div>
+<br />
+<div>
+  <label>Channels: </label>
+  <button *ngFor="let item of channels" (click)="removeChannel(item)">{{item}} (-)</button>
+</div>
+<br />
+<textarea style="width: 50vw; height: 15vh" disabled>
+{{messages}}
+</textarea>
+<br />
+<span>ConnectionID: {{connectionId}} </span>
+<button>Clear</button>
+<br />
+<br />
+<fieldset>
+  <div>
+    <label>Message: </label>
+    <input type="text" id="msg" placeholder="Write a message" [(ngModel)]="msg"/>
+  </div>
+  <div>
+    <label>Channel: </label>
+    <input type="text" id="msg-channel" placeholder="Channel Name" [(ngModel)]="channelSend"/>
+  </div>
+  <br />
+  <button (click)="trySend()">Send Message</button>
+</fieldset>
